@@ -3,6 +3,7 @@ import datetime
 import random
 # import pandas as pd # (Funciona somente no computador)
 from modulo import tryOption
+from modulo import tryOptionList
 from modulo import tryExclusion
 from modulo import tryIsNumber
 from modulo import tryOptionConsult
@@ -197,7 +198,7 @@ while activate:
                                           ' [?] - Lista de Perfumaria - [2]\n'
                                           ' [?] - Lista de Dermo - [3]\n'
                                           ' --> ' + normal))
-        tryOption(decis_listas)
+        tryOptionList(decis_listas)
         if decis_listas == '1':
             # Inputs de dados - RD Marcas
             print('\n')
