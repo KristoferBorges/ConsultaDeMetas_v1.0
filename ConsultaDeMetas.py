@@ -7,8 +7,9 @@ from modulo import tryOptionList
 from modulo import tryExclusion
 from modulo import capturaDeValoresMetaDia
 from modulo import capturaDeValoresVendaDia
+from modulo import capturaDeValoresPecaDia
 from modulo import tryOptionConsult
-from modulo import tryIsNumber_pecas
+
 
 # Cores
 red = '\033[31m'
@@ -328,12 +329,9 @@ while activate:
             dateVerification()
             metaDia = capturaDeValoresMetaDia()
             vendaDia = capturaDeValoresVendaDia()
-            pecaDia = str(input(' [?] - Quantas peças Vendeu Hoje: '))
-            if len(pecaDia) == 0:
-                pecaDia = int(0)
-            tryIsNumber_pecas(pecaDia)
+            pecaDia = capturaDeValoresPecaDia()
             # Impulso de inserção (Insere de forma rápida os dados de forma aleatória)
-            if teste and metaDia == 0 and vendaDia == 0 and pecaDia == '0':
+            if teste and metaDia == 0 and vendaDia == 0:
                 vendaDia = float(random.randint(99, 9999))
                 metaDia = random.randint(99, 9999)
                 pecaDia = random.randint(5, 60)

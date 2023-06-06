@@ -145,6 +145,24 @@ def capturaDeValoresVendaDia():
         print(red + ' [!] - DIGITE UM NÚMERO INTEIRO VÁLIDO!' + normal)
 
 
+def capturaDeValoresPecaDia():
+    """
+        --> Função simples para identificar se o usuário digitou um número inteiro válido.
+        :param valor:
+        :return: Retorna o número em caso de digitar corretamente.
+        """
+    try:
+        while True:
+            pecaDia = input(green + ' [?] - Quantas peças Vendeu Hoje: ' + normal)
+            if pecaDia.isnumeric():
+                pecaDia = int(pecaDia)
+                return pecaDia
+            else:
+                print(red + ' [!] - Valor inválido. Insira um número válido.' + normal)
+    except ValueError:
+        print(red + ' [!] - DIGITE UM NÚMERO INTEIRO VÁLIDO!' + normal)
+
+
 def tryIsNumber_pecas(valor):
 
     """
