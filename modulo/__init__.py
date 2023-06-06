@@ -101,23 +101,48 @@ def tryExclusion(option):
             print(red + ' [!] - APENAS NÚMEROS INTEIROS DAS OPÇÕES LISTADAS!' + normal)
 
 
-def tryIsNumber(valor):
+def verificar_numero(valor):
+    try:
+        numero = float(valor)
+        return True
+    except ValueError:
+        return False
+
+
+def capturaDeValoresMetaDia():
     """
     --> Função simples para identificar se o usuário digitou um número inteiro válido.
     :param valor:
     :return: Retorna o número em caso de digitar corretamente.
     """
     try:
-        pass
+        while True:
+            metaDia = input(green + ' [?] - Qual a Meta do Dia R$ ' + normal)
+            if verificar_numero(metaDia):
+                metaDia = float(metaDia)
+                return metaDia
+            else:
+                print(red + ' [!] - Valor inválido. Insira um número válido.' + normal)
     except ValueError:
         print(red + ' [!] - DIGITE UM NÚMERO INTEIRO VÁLIDO!' + normal)
-    except Exception as error:
-        print(red + f' [!] - ERRO DE {error.__class__}' + normal)
-    else:
-        if valor.is_integer():
-            return valor
-        else:
-            return valor
+
+
+def capturaDeValoresVendaDia():
+    """
+    --> Função simples para identificar se o usuário digitou um número inteiro válido.
+    :param valor:
+    :return: Retorna o número em caso de digitar corretamente.
+    """
+    try:
+        while True:
+            vendaDia = input(green + ' [?] - Qual a Venda do Dia R$ ' + normal)
+            if verificar_numero(vendaDia):
+                vendaDia = float(vendaDia)
+                return vendaDia
+            else:
+                print(red + ' [!] - Valor inválido. Insira um número válido.' + normal)
+    except ValueError:
+        print(red + ' [!] - DIGITE UM NÚMERO INTEIRO VÁLIDO!' + normal)
 
 
 def tryIsNumber_pecas(valor):

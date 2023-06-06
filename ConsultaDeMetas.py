@@ -5,7 +5,8 @@ import random
 from modulo import tryOption
 from modulo import tryOptionList
 from modulo import tryExclusion
-from modulo import tryIsNumber
+from modulo import capturaDeValoresMetaDia
+from modulo import capturaDeValoresVendaDia
 from modulo import tryOptionConsult
 from modulo import tryIsNumber_pecas
 
@@ -205,10 +206,8 @@ while activate:
             print(texto_RDMarcas_centralizado)
             data = str(input(green + ' [?] - Informe a data [dia/mês/ano]: '))
             dateVerification()
-            metaDia = float(input(' [?] - Qual a Meta do Dia R$ '))
-            vendaDia = float(input(' [?] - Quando Vendeu Hoje R$ '))
-            tryIsNumber(metaDia)
-            tryIsNumber(vendaDia)
+            metaDia = capturaDeValoresMetaDia()
+            vendaDia = capturaDeValoresVendaDia()
             # Impulso de inserção (Insere de forma rápida os dados de forma aleatória)
             if teste and metaDia == 0 and vendaDia == 0:
                 vendaDia = float(random.randint(99, 9999))
@@ -267,10 +266,8 @@ while activate:
             print(texto_PERFUMARIA_centralizado)
             data = str(input(green + ' [?] - Informe a data [dia/mês/ano]: '))
             dateVerification()
-            metaDia = float(input(' [?] - Qual a Meta do Dia R$ '))
-            vendaDia = float(input(' [?] - Quando Vendeu Hoje R$ '))
-            tryIsNumber(metaDia)
-            tryIsNumber(vendaDia)
+            metaDia = capturaDeValoresMetaDia()
+            vendaDia = capturaDeValoresVendaDia()
             # Impulso de inserção (Insere de forma rápida os dados de forma aleatória)
             if teste and metaDia == 0 and vendaDia == 0:
                 vendaDia = float(random.randint(99, 9999))
@@ -329,13 +326,11 @@ while activate:
             print(texto_DERMO_centralizado)
             data = str(input(green + ' [?] - Informe a data [dia/mês/ano]: '))
             dateVerification()
-            metaDia = float(input(' [?] - Qual a Meta do Dia R$ '))
-            vendaDia = float(input(' [?] - Quando Vendeu Hoje R$ '))
+            metaDia = capturaDeValoresMetaDia()
+            vendaDia = capturaDeValoresVendaDia()
             pecaDia = str(input(' [?] - Quantas peças Vendeu Hoje: '))
             if len(pecaDia) == 0:
                 pecaDia = int(0)
-            tryIsNumber(metaDia)
-            tryIsNumber(vendaDia)
             tryIsNumber_pecas(pecaDia)
             # Impulso de inserção (Insere de forma rápida os dados de forma aleatória)
             if teste and metaDia == 0 and vendaDia == 0 and pecaDia == '0':
