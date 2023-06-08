@@ -199,9 +199,9 @@ while True:
         print('\n')
         print(green + ' [!] - SISTEMA DE REGISTRO\n' + normal)
         print(texto_decis_centralizado)
-        decis_listas = str(input(yellow + ' [?] - Lista de RD Marcas - [1]\n'
-                                          ' [?] - Lista de Perfumaria - [2]\n'
-                                          ' [?] - Lista de Dermo - [3]\n'
+        decis_listas = str(input(yellow + f' [?] - Lista de RD Marcas - {opcao[0]}\n' + yellow +
+                                          f' [?] - Lista de Perfumaria - {opcao[1]}\n' + yellow +
+                                          f' [?] - Lista de Dermo - {opcao[2]}\n' + yellow +
                                           ' --> ' + normal))
         tryOptionList(decis_listas)
         if decis_listas == '1':
@@ -402,10 +402,11 @@ while True:
     elif decis_registro_exclusao_consulta == '3':
         print('\n')
         print(texto_decis_centralizado)
-        decis_consulta = str(input((yellow + " [?] - CONSULTAR LISTA DE RD MARCAS [1]\n"
-                                             " [?] - CONSULTAR LISTA DE PERFUMARIA [2]\n"
-                                             " [?] - CONSULTAR LISTA DE DERMO [3]\n"
-                                             " [?] - CONSULTAR TODAS AS LISTAS [4]\n --> " + normal)))
+        decis_consulta = str(input((yellow + f" [?] - CONSULTAR LISTA DE RD MARCAS {opcao[0]}\n" + yellow +
+                                             f" [?] - CONSULTAR LISTA DE PERFUMARIA {opcao[1]}\n" + yellow +
+                                             f" [?] - CONSULTAR LISTA DE DERMO {opcao[2]}\n" + yellow +
+                                             f" [?] - CONSULTAR TODAS AS LISTAS {opcao[3]}\n" + yellow +
+                                             " --> " + normal)))
         tryOptionConsult(decis_consulta)
         if decis_consulta == '1':
             print('¨¨' * 46)
