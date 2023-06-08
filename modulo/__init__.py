@@ -28,7 +28,7 @@ def tryOption(option):
     except Exception as error:
         print(red + f' [!] - ERRO DE {error.__class__}' + normal)
     else:
-        if option in range(1, 5):
+        if option in range(1, 6):
             return option
         elif option == 'adm':
             return option

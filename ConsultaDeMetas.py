@@ -69,6 +69,9 @@ texto_RDMarcas_lista_centralizado = texto_RDMarcas.center(tamanho_lista)
 texto_PERFUMARIA_lista_centralizado = texto_PERFUMARIA.center(tamanho_lista)
 texto_DERMO_lista_centralizado = texto_DERMO.center(tamanho_lista)
 
+opcao = tuple([normal + "[1]", normal + "[2]", normal + "[3]", normal + "[4]", normal + "[5]"])
+
+
 # Variável de Teste, deixar falso se não for utilizado
 teste = False
 while True:
@@ -80,21 +83,21 @@ while True:
 
     # input de decisão
     print(texto_decis_centralizado)
-    decis_registro_exclusao_consulta = str(input(yellow + ' [?] - NOVOS REGISTROS [1]\n'
-                                                          ' [?] - LIMPAR DADOS ATUAIS [2]\n'
-                                                          ' [?] - CONSULTAR LISTAS ATUAIS [3]\n'
-                                                          ' [?] - BACKUP DOS DADOS [4]' + red + ' '
-                                                          '(COMPUTADOR)\n'
-                                                          + yellow + ' --> ' + normal))
+    decis_registro_exclusao_consulta = str(input(yellow + f' [?] - NOVOS REGISTROS {opcao[0]}\n' + yellow +
+                                                          f' [?] - LIMPAR DADOS ATUAIS {opcao[1]}\n' + yellow +
+                                                          f' [?] - CONSULTAR LISTAS ATUAIS {opcao[2]}\n' + yellow +
+                                                          f' [?] - BACKUP DOS DADOS {opcao[3]}\n' + yellow +
+                                                          f' [?] - SAIR DO PROGRAMA {opcao[4]}\n' + yellow +
+                                                          ' --> ' + normal))
     tryOption(decis_registro_exclusao_consulta)
     if decis_registro_exclusao_consulta == '2':
         print('\n')
         print(red + ' [!] - SISTEMA DE EXCLUSÃO\n' + normal)
         print(texto_decis_centralizado)
-        decis2_listas = str(input(red + ' [?] - Lista de RD Marcas - [1]\n'
-                                        ' [?] - Lista de Perfumaria - [2]\n'
-                                        ' [?] - Lista de Dermo - [3]\n'
-                                        ' [?] - TODAS AS LISTAS - [4]\n'
+        decis2_listas = str(input(red + f' [?] - Lista de RD Marcas - {opcao[0]}\n' + red +
+                                        f' [?] - Lista de Perfumaria - {opcao[1]}\n' + red +
+                                        f' [?] - Lista de Dermo - {opcao[2]}\n' + red +
+                                        f' [?] - TODAS AS LISTAS - {opcao[3]}\n' + red +
                                         ' --> ' + normal + ''))
         tryExclusion(decis2_listas)
         print('\n')
@@ -526,3 +529,7 @@ while True:
 
         elif confirmacao != 'S':
             print('\n' + red + ' [!] - PROCESSO INTERROMPIDO')
+    elif decis_registro_exclusao_consulta == '5':
+        print('\n')
+        print(red + ' [!] - ENCERRANDO A SESSÃO')
+        break
