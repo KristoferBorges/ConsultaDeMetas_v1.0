@@ -1,7 +1,8 @@
 import time
 import datetime
 import random
-# import pandas as pd # (Funciona somente no computador)
+import pandas as pd
+import openpyxl
 from modulo import tryOption
 from modulo import tryOptionList
 from modulo import tryExclusion
@@ -485,8 +486,8 @@ while activate:
             print('¨¨' * 52)
             print('¨¨' * 52)
     elif decis_registro_exclusao_consulta == '4':
-        print(red + '[!] - OPÇÃO DESATIVADA POR QUESTÕES TÉCNICAS (19/05/2023) - SEM PREVISÃO DE RETORNO!')
-        """print(green + ' [!] - TODOS OS DADOS SERÃO GUARDADOS!')
+        # print(red + '[!] - OPÇÃO DESATIVADA POR QUESTÕES TÉCNICAS (19/05/2023) - SEM PREVISÃO DE RETORNO!')
+        print(green + ' [!] - TODOS OS DADOS SERÃO GUARDADOS!')
         time.sleep(0.5)
         # BACKUP DE TODAS AS LISTAS
         confirmacao = str(input(green + ' [!] - Confirma o Backup dos dados [S/N] ' + normal)).upper().strip()
@@ -504,11 +505,11 @@ while activate:
                 nomeArquivoDERMO = f"BackupDERMO-{datahoje}-{horahoje}"
 
                 # Separa as informações em formato pandas
-                tabela_RDMARCAS = pd.read_csv("listaRDMARCAS.txt", sep="|")
-                tabela_PERFUMARIA = pd.read_csv("listaPERFUMARIA.txt", sep="|")
-                tabela_DERMO = pd.read_csv("listaDERMO.txt", sep="|")
+                tabela_RDMARCAS = pd.read_csv("storage\listaRDMARCAS.txt", sep="|")
+                tabela_PERFUMARIA = pd.read_csv("storage\listaPERFUMARIA.txt", sep="|")
+                tabela_DERMO = pd.read_csv("storage\listaDERMO.txt", sep="|")
 
-                # Converte em arquivos Excel
+                # Converte em arquivos Excel e coloca na pasta requisitada
                 tabela_RDMARCAS.to_excel(fr"backup\RDMARCAS\{nomeArquivoRD}.xlsx", index=False)
                 tabela_RDMARCAS.to_excel(fr"backup\PERFUMARIA\{nomeArquivoPERFUMARIA}.xlsx", index=False)
                 tabela_RDMARCAS.to_excel(fr"backup\DERMO\{nomeArquivoDERMO}.xlsx", index=False)
@@ -526,4 +527,4 @@ while activate:
                 print('\n' + red + ' [!] - PROCESSO INTERROMPIDO (DIRETÓRIO NÃO ENCONTRADO)')
 
         elif confirmacao != 'S':
-            print('\n' + red + ' [!] - PROCESSO INTERROMPIDO')"""
+            print('\n' + red + ' [!] - PROCESSO INTERROMPIDO')
