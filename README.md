@@ -1,4 +1,4 @@
-# ConsultaDeMetas v1.5
+# ConsultaDeMetas v1.6
 # Compatibilidade
 O software é compatível com Desktop e Android.
 # Funcionalidade

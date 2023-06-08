@@ -44,7 +44,7 @@ def dateVerification():
         # Data de ontem formatada
 
 
-titulo = "CONSULTA DE METAS_v1.5"
+titulo = "CONSULTA DE METAS_v1.6"
 tamanho = 42
 tamanho_lista = 105
 titulo_centralizado = titulo.center(tamanho)
@@ -485,7 +485,6 @@ while True:
             print('¨¨' * 52)
             print('¨¨' * 52)
     elif decis_registro_exclusao_consulta == '4':
-        # print(red + '[!] - OPÇÃO DESATIVADA POR QUESTÕES TÉCNICAS (19/05/2023) - SEM PREVISÃO DE RETORNO!')
         print(green + ' [!] - TODOS OS DADOS SERÃO GUARDADOS!')
         time.sleep(0.5)
         # BACKUP DE TODAS AS LISTAS
