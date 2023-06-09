@@ -44,7 +44,7 @@ def dateVerification():
         # Data de ontem formatada
 
 
-titulo = "CONSULTA DE METAS_v1.7"
+titulo = "CONSULTA DE METAS " + normal + "v1.7"
 tamanho = 41
 tamanho_lista = 105
 titulo_centralizado = titulo.center(tamanho)
@@ -77,7 +77,7 @@ teste = False
 while True:
     print('\n\n')
     print(rosa + '$=' * 21 + normal)
-    print(roxo + titulo_centralizado + normal)
+    print(roxo + titulo_centralizado)
     print(rosa + '$=' * 21 + normal)
     print('\n')
 
