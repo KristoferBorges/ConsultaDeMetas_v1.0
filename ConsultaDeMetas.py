@@ -513,10 +513,19 @@ while True:
                 tabela_PERFUMARIA = pd.read_csv("storage/listaPERFUMARIA.txt", sep="|")
                 tabela_DERMO = pd.read_csv("storage/listaDERMO.txt", sep="|")
 
+                # Define as colunas específicas
+                colunas = ["Data", "Meta", "Meta.AC", "Venda", "Venda.AC", "Sobras", "P"]
+                colunas_dermo = ["Data", "Meta", "Meta.AC", "Venda", "Venda.AC", "Pecas", "Sobras", "P"]
+
+                # Renomeia as colunas nas tabelas
+                tabela_RDMARCAS.columns = colunas
+                tabela_PERFUMARIA.columns = colunas
+                tabela_DERMO.columns = colunas_dermo
+
                 # Converte em arquivos Excel e coloca na pasta requisitada
                 tabela_RDMARCAS.to_excel(fr"backup/RDMARCAS/{nomeArquivoRD}.xlsx", index=False)
-                tabela_RDMARCAS.to_excel(fr"backup/PERFUMARIA/{nomeArquivoPERFUMARIA}.xlsx", index=False)
-                tabela_RDMARCAS.to_excel(fr"backup/DERMO/{nomeArquivoDERMO}.xlsx", index=False)
+                tabela_PERFUMARIA.to_excel(fr"backup/PERFUMARIA/{nomeArquivoPERFUMARIA}.xlsx", index=False)
+                tabela_DERMO.to_excel(fr"backup/DERMO/{nomeArquivoDERMO}.xlsx", index=False)
 
                 # Mensagem de finalização
                 print(green + ' [!] - PROCESSO FINALIZADO')
@@ -557,15 +566,15 @@ while True:
                 print(f" [!] - Venda acumulada: R$ {total_vendas:.2f}")
                 print(f" [!] - Sobra: R$ {sobra:.2f}")
                 print(f" [!] - Porcentagem: {porcentagem:.2f}%" + normal)
-                sleep(1.5)
+                sleep(1)
                 if quantidade_linhas_meta == quantidade_linhas_venda:
                     print(green + ' [!] - INTEGRIDADE DOS DADOS CONFIRMADA' + normal)
                     print('\n')
-                    sleep(1.5)
+                    sleep(1)
                 else:
                     print(red + ' [!] - INTEGRIDADE DOS DADOS COMPROMETIDA' + normal)
                     print('\n')
-                    sleep(1.5)
+                    sleep(1)
             except Exception as error:
                 print(red + f' [!] - ERRO DE {error.__class__}' + normal)
 
@@ -595,15 +604,15 @@ while True:
                 print(f" [!] - Venda acumulada: R$ {total_vendas:.2f}")
                 print(f" [!] - Sobra: R$ {sobra:.2f}")
                 print(f" [!] - Porcentagem: {porcentagem:.2f}%" + normal)
-                sleep(1.5)
+                sleep(1)
                 if quantidade_linhas_meta == quantidade_linhas_venda:
                     print(green + ' [!] - INTEGRIDADE DOS DADOS CONFIRMADA' + normal)
                     print('\n')
-                    sleep(1.5)
+                    sleep(1)
                 else:
                     print(red + ' [!] - INTEGRIDADE DOS DADOS COMPROMETIDA' + normal)
                     print('\n')
-                    sleep(1.5)
+                    sleep(1)
             except Exception as error:
                 print(red + f' [!] - ERRO DE {error.__class__}' + normal)
 
@@ -638,15 +647,15 @@ while True:
                 print(yellow + " [!] - Peças acumuladas:" + normal + f" {total_pecas}Un")
                 print(yellow + " [!] - Sobra:" + normal + f" R$ {sobra:.2f}")
                 print(yellow + " [!] - Porcentagem:" + normal + f" {porcentagem:.2f}%" + normal)
-                sleep(1.5)
+                sleep(1)
                 if quantidade_linhas_meta == quantidade_linhas_venda:
                     print(green + ' [!] - INTEGRIDADE DOS DADOS CONFIRMADA' + normal)
                     print('\n')
-                    sleep(1.5)
+                    sleep(0.5)
                 else:
                     print(red + ' [!] - INTEGRIDADE DOS DADOS COMPROMETIDA' + normal)
                     print('\n')
-                    sleep(1.5)
+                    sleep(0.5)
             except Exception as error:
                 print(red + f' [!] - ERRO DE {error.__class__}' + normal)
 
