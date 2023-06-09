@@ -1,3 +1,5 @@
+from time import sleep
+
 # Cores
 red = '\033[31m'
 green = '\033[32m'
@@ -30,17 +32,20 @@ def check_data_RD():
         print(f" [!] - Venda acumulada: R$ {total_vendas:.2f}")
         print(f" [!] - Sobra: R$ {sobra:.2f}")
         print(f" [!] - Porcentagem: {porcentagem:.2f}%" + normal)
+        sleep(1.5)
         if quantidade_linhas_meta == quantidade_linhas_venda:
             print(green + ' [!] - INTEGRIDADE DOS DADOS CONFIRMADA' + normal)
+            print('\n')
+            sleep(1.5)
         else:
             print(red + ' [!] - INTEGRIDADE DOS DADOS COMPROMETIDA' + normal)
+            print('\n')
+            sleep(1.5)
     except Exception as error:
         print(red + f' [!] - ERRO DE {error.__class__}' + normal)
 
 
 check_data_RD()
-
-print('\n\n')
 
 
 def check_data_PERFUMARIA():
@@ -65,17 +70,20 @@ def check_data_PERFUMARIA():
         print(f" [!] - Venda acumulada: R$ {total_vendas:.2f}")
         print(f" [!] - Sobra: R$ {sobra:.2f}")
         print(f" [!] - Porcentagem: {porcentagem:.2f}%" + normal)
+        sleep(1.5)
         if quantidade_linhas_meta == quantidade_linhas_venda:
             print(green + ' [!] - INTEGRIDADE DOS DADOS CONFIRMADA' + normal)
+            print('\n')
+            sleep(1.5)
         else:
             print(red + ' [!] - INTEGRIDADE DOS DADOS COMPROMETIDA' + normal)
+            print('\n')
+            sleep(1.5)
     except Exception as error:
         print(red + f' [!] - ERRO DE {error.__class__}' + normal)
 
 
 check_data_PERFUMARIA()
-
-print('\n\n')
 
 
 def check_data_DERMO():
@@ -105,10 +113,15 @@ def check_data_DERMO():
         print(yellow + " [!] - Peças acumuladas:" + normal + f" {total_pecas}Un")
         print(yellow + " [!] - Sobra:" + normal + f" R$ {sobra:.2f}")
         print(yellow + " [!] - Porcentagem:" + normal + f" {porcentagem:.2f}%" + normal)
+        sleep(1.5)
         if quantidade_linhas_meta == quantidade_linhas_venda:
             print(green + ' [!] - INTEGRIDADE DOS DADOS CONFIRMADA' + normal)
+            print('\n')
+            sleep(1.5)
         else:
             print(red + ' [!] - INTEGRIDADE DOS DADOS COMPROMETIDA' + normal)
+            print('\n')
+            sleep(1.5)
     except Exception as error:
         print(red + f' [!] - ERRO DE {error.__class__}' + normal)
 

@@ -1,8 +1,8 @@
-import time
 import datetime
 import random
 import pandas as pd
 import openpyxl
+from time import sleep
 from modulo import tryOption
 from modulo import tryOptionList
 from modulo import tryExclusion
@@ -69,7 +69,7 @@ texto_RDMarcas_lista_centralizado = texto_RDMarcas.center(tamanho_lista)
 texto_PERFUMARIA_lista_centralizado = texto_PERFUMARIA.center(tamanho_lista)
 texto_DERMO_lista_centralizado = texto_DERMO.center(tamanho_lista)
 
-opcao = tuple([normal + "[1]", normal + "[2]", normal + "[3]", normal + "[4]", normal + "[5]"])
+opcao = tuple([normal + "[1]", normal + "[2]", normal + "[3]", normal + "[4]", normal + "[5]", normal + "[6]"])
 
 
 # Variável de Teste, deixar falso se não for utilizado
@@ -87,7 +87,9 @@ while True:
                                                           f' [?] - LIMPAR DADOS ATUAIS {opcao[1]}\n' + yellow +
                                                           f' [?] - CONSULTAR LISTAS ATUAIS {opcao[2]}\n' + yellow +
                                                           f' [?] - BACKUP DOS DADOS {opcao[3]}\n' + yellow +
-                                                          f' [?] - SAIR DO PROGRAMA {opcao[4]}\n' + yellow +
+                                                          f' [?] - VERIFICAR INTEGRIDADE DOS DADOS {opcao[4]}\n'
+                                                          + yellow +
+                                                          f' [?] - SAIR DO PROGRAMA {opcao[5]}\n' + yellow +
                                                           ' --> ' + normal))
     tryOption(decis_registro_exclusao_consulta)
     if decis_registro_exclusao_consulta == '2':
@@ -112,7 +114,7 @@ while True:
                 with open("storage/vendaAcumuladaRDMARCAS.txt", "w") as vendaAcumuladaRDMARCAS:
                     vendaAcumuladaRDMARCAS.write("")
                 for i in range(3, 0, -1):
-                    time.sleep(0.6)
+                    sleep(0.6)
                     print(red, end='')
                     print(f' [!] - CARREGANDO {i}')
                     print(normal, end='')
@@ -131,7 +133,7 @@ while True:
                 with open("storage/vendaAcumuladaPERFUMARIA.txt", "w") as vendaAcumuladaPERFUMARIA:
                     vendaAcumuladaPERFUMARIA.write("")
                 for i in range(3, 0, -1):
-                    time.sleep(0.6)
+                    sleep(0.6)
                     print(red, end='')
                     print(f' [!] - CARREGANDO {i}')
                     print(normal, end='')
@@ -152,7 +154,7 @@ while True:
                 with open("storage/pecaAcumuladaDERMO.txt", "w") as pecaAcumuladaDERMO:
                     pecaAcumuladaDERMO.write("")
                 for i in range(3, 0, -1):
-                    time.sleep(0.6)
+                    sleep(0.6)
                     print(red, end='')
                     print(f' [!] - CARREGANDO {i}')
                     print(normal, end='')
@@ -187,7 +189,7 @@ while True:
                 with open("storage/pecaAcumuladaDERMO.txt", "w") as pecaAcumuladaDERMO:
                     pecaAcumuladaDERMO.write("")
                 for i in range(3, 0, -1):
-                    time.sleep(0.6)
+                    sleep(0.6)
                     print(red, end='')
                     print(f' [!] - CARREGANDO {i}')
                     print(normal, end='')
@@ -490,7 +492,7 @@ while True:
             print('¨¨' * 52)
     elif decis_registro_exclusao_consulta == '4':
         print(green + ' [!] - TODOS OS DADOS SERÃO GUARDADOS!')
-        time.sleep(0.5)
+        sleep(0.5)
         # BACKUP DE TODAS AS LISTAS
         confirmacao = str(input(green + ' [!] - Confirma o Backup dos dados [S/N] ' + normal)).upper().strip()
         if confirmacao == 'S':
@@ -518,7 +520,7 @@ while True:
 
                 # Mensagem de finalização
                 print(green + ' [!] - PROCESSO FINALIZADO')
-                time.sleep(1)
+                sleep(1)
             except PermissionError:
                 print('\n' + red + ' [!] - PROCESSO INTERROMPIDO (ARQUIVO ABERTO)')
             except TypeError:
@@ -531,6 +533,127 @@ while True:
         elif confirmacao != 'S':
             print('\n' + red + ' [!] - PROCESSO INTERROMPIDO')
     elif decis_registro_exclusao_consulta == '5':
+        print('\n\n')
+
+        def check_data_RD():
+            try:
+                with open("storage/metaAcumuladaRDMARCAS.txt", "r") as arquivoRDMetas:
+                    metas = arquivoRDMetas.readlines()
+                    quantidade_linhas_meta = len(metas)
+                with open("storage/vendaAcumuladaRDMARCAS.txt", "r") as arquivoRDVendas:
+                    vendas = arquivoRDVendas.readlines()
+                    quantidade_linhas_venda = len(vendas)
+
+                metas = [float(meta.strip()) for meta in metas]
+                vendas = [float(venda.strip()) for venda in vendas]
+
+                total_metas = sum(metas)
+                total_vendas = sum(vendas)
+                sobra = abs(total_metas - total_vendas)
+                porcentagem = (total_vendas / total_metas) * 100
+
+                print(rosa + "Dados da lista de RD Marcas:" + normal)
+                print(yellow + f" [!] - Meta acumulada: R$ {total_metas:.2f}")
+                print(f" [!] - Venda acumulada: R$ {total_vendas:.2f}")
+                print(f" [!] - Sobra: R$ {sobra:.2f}")
+                print(f" [!] - Porcentagem: {porcentagem:.2f}%" + normal)
+                sleep(1.5)
+                if quantidade_linhas_meta == quantidade_linhas_venda:
+                    print(green + ' [!] - INTEGRIDADE DOS DADOS CONFIRMADA' + normal)
+                    print('\n')
+                    sleep(1.5)
+                else:
+                    print(red + ' [!] - INTEGRIDADE DOS DADOS COMPROMETIDA' + normal)
+                    print('\n')
+                    sleep(1.5)
+            except Exception as error:
+                print(red + f' [!] - ERRO DE {error.__class__}' + normal)
+
+
+        check_data_RD()
+
+
+        def check_data_PERFUMARIA():
+            try:
+                with open("storage/metaAcumuladaPERFUMARIA.txt", "r") as arquivoPERFUMARIAMetas:
+                    metas = arquivoPERFUMARIAMetas.readlines()
+                    quantidade_linhas_meta = len(metas)
+                with open("storage/vendaAcumuladaPERFUMARIA.txt", "r") as arquivoPERFUMARIAVendas:
+                    vendas = arquivoPERFUMARIAVendas.readlines()
+                    quantidade_linhas_venda = len(vendas)
+
+                metas = [float(meta.strip()) for meta in metas]
+                vendas = [float(venda.strip()) for venda in vendas]
+
+                total_metas = sum(metas)
+                total_vendas = sum(vendas)
+                sobra = abs(total_metas - total_vendas)
+                porcentagem = (total_vendas / total_metas) * 100
+
+                print(rosa + "Dados da lista de PERFUMARIA:" + normal)
+                print(yellow + f" [!] - Meta acumulada: R$ {total_metas:.2f}")
+                print(f" [!] - Venda acumulada: R$ {total_vendas:.2f}")
+                print(f" [!] - Sobra: R$ {sobra:.2f}")
+                print(f" [!] - Porcentagem: {porcentagem:.2f}%" + normal)
+                sleep(1.5)
+                if quantidade_linhas_meta == quantidade_linhas_venda:
+                    print(green + ' [!] - INTEGRIDADE DOS DADOS CONFIRMADA' + normal)
+                    print('\n')
+                    sleep(1.5)
+                else:
+                    print(red + ' [!] - INTEGRIDADE DOS DADOS COMPROMETIDA' + normal)
+                    print('\n')
+                    sleep(1.5)
+            except Exception as error:
+                print(red + f' [!] - ERRO DE {error.__class__}' + normal)
+
+
+        check_data_PERFUMARIA()
+
+
+        def check_data_DERMO():
+            try:
+                with open("storage/metaAcumuladaDERMO.txt", "r") as arquivoDERMOMetas:
+                    metas = arquivoDERMOMetas.readlines()
+                    quantidade_linhas_meta = len(metas)
+                with open("storage/vendaAcumuladaDERMO.txt", "r") as arquivoDERMOVendas:
+                    vendas = arquivoDERMOVendas.readlines()
+                    quantidade_linhas_venda = len(vendas)
+                with open("storage/pecaAcumuladaDERMO.txt", "r") as arquivoDERMOPecas:
+                    pecas = arquivoDERMOPecas.readlines()
+
+                metas = [float(meta.strip()) for meta in metas]
+                vendas = [float(venda.strip()) for venda in vendas]
+                pecas = [int(peca.strip()) for peca in pecas]
+
+                total_metas = sum(metas)
+                total_vendas = sum(vendas)
+                total_pecas = sum(pecas)
+                sobra = abs(total_metas - total_vendas)
+                porcentagem = (total_vendas / total_metas) * 100
+
+                print(rosa + "Dados da lista de DERMO:" + normal)
+                print(yellow + " [!] - Meta acumulada:" + normal + f" R$ {total_metas:.2f}")
+                print(yellow + " [!] - Venda acumulada:" + normal + f" R$ {total_vendas:.2f}")
+                print(yellow + " [!] - Peças acumuladas:" + normal + f" {total_pecas}Un")
+                print(yellow + " [!] - Sobra:" + normal + f" R$ {sobra:.2f}")
+                print(yellow + " [!] - Porcentagem:" + normal + f" {porcentagem:.2f}%" + normal)
+                sleep(1.5)
+                if quantidade_linhas_meta == quantidade_linhas_venda:
+                    print(green + ' [!] - INTEGRIDADE DOS DADOS CONFIRMADA' + normal)
+                    print('\n')
+                    sleep(1.5)
+                else:
+                    print(red + ' [!] - INTEGRIDADE DOS DADOS COMPROMETIDA' + normal)
+                    print('\n')
+                    sleep(1.5)
+            except Exception as error:
+                print(red + f' [!] - ERRO DE {error.__class__}' + normal)
+
+
+        check_data_DERMO()
+
+    elif decis_registro_exclusao_consulta == '6':
         print('\n')
         print(red + ' [!] - ENCERRANDO A SESSÃO')
         break
