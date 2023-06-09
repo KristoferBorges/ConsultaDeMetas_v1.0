@@ -45,7 +45,7 @@ def dateVerification():
 
 
 titulo = "CONSULTA DE METAS_v1.7"
-tamanho = 42
+tamanho = 41
 tamanho_lista = 105
 titulo_centralizado = titulo.center(tamanho)
 data_formatada = ""
