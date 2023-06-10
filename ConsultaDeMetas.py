@@ -562,10 +562,10 @@ while True:
                 porcentagem = (total_vendas / total_metas) * 100
 
                 print(rosa + "Dados da lista de RD Marcas:" + normal)
-                print(yellow + f" [!] - Meta acumulada: R$ {total_metas:.2f}")
-                print(f" [!] - Venda acumulada: R$ {total_vendas:.2f}")
-                print(f" [!] - Sobra: R$ {sobra:.2f}")
-                print(f" [!] - Porcentagem: {porcentagem:.2f}%" + normal)
+                print(yellow + " [!] - Meta acumulada:" + normal + f"R$ {total_metas:.2f}")
+                print(yellow + " [!] - Venda acumulada:" + normal + f"R$ {total_vendas:.2f}")
+                print(yellow + " [!] - Sobra:" + normal + f"R$ {sobra:.2f}")
+                print(yellow + " [!] - Porcentagem:" + normal + f" {porcentagem:.2f}%")
                 sleep(1)
                 if quantidade_linhas_meta == quantidade_linhas_venda:
                     print(green + ' [!] - INTEGRIDADE DOS DADOS CONFIRMADA' + normal)
@@ -600,10 +600,10 @@ while True:
                 porcentagem = (total_vendas / total_metas) * 100
 
                 print(rosa + "Dados da lista de PERFUMARIA:" + normal)
-                print(yellow + f" [!] - Meta acumulada: R$ {total_metas:.2f}")
-                print(f" [!] - Venda acumulada: R$ {total_vendas:.2f}")
-                print(f" [!] - Sobra: R$ {sobra:.2f}")
-                print(f" [!] - Porcentagem: {porcentagem:.2f}%" + normal)
+                print(yellow + " [!] - Meta acumulada:" + normal + f"R$ {total_metas:.2f}")
+                print(yellow + " [!] - Venda acumulada:" + normal + f"R$ {total_vendas:.2f}")
+                print(yellow + " [!] - Sobra:" + normal + f"R$ {sobra:.2f}")
+                print(yellow + " [!] - Porcentagem:" + normal + f" {porcentagem:.2f}%")
                 sleep(1)
                 if quantidade_linhas_meta == quantidade_linhas_venda:
                     print(green + ' [!] - INTEGRIDADE DOS DADOS CONFIRMADA' + normal)
@@ -642,10 +642,10 @@ while True:
                 porcentagem = (total_vendas / total_metas) * 100
 
                 print(rosa + "Dados da lista de DERMO:" + normal)
-                print(yellow + " [!] - Meta acumulada:" + normal + f" R$ {total_metas:.2f}")
-                print(yellow + " [!] - Venda acumulada:" + normal + f" R$ {total_vendas:.2f}")
+                print(yellow + " [!] - Meta acumulada:" + normal + f"R$ {total_metas:.2f}")
+                print(yellow + " [!] - Venda acumulada:" + normal + f"R$ {total_vendas:.2f}")
                 print(yellow + " [!] - Peças acumuladas:" + normal + f" {total_pecas}Un")
-                print(yellow + " [!] - Sobra:" + normal + f" R$ {sobra:.2f}")
+                print(yellow + " [!] - Sobra:" + normal + f"R$ {sobra:.2f}")
                 print(yellow + " [!] - Porcentagem:" + normal + f" {porcentagem:.2f}%" + normal)
                 sleep(1)
                 if quantidade_linhas_meta == quantidade_linhas_venda:
