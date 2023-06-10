@@ -646,7 +646,7 @@ while True:
                 print(yellow + " [!] - Venda acumulada:" + normal + f"R$ {total_vendas:.2f}")
                 print(yellow + " [!] - Peças acumuladas:" + normal + f" {total_pecas}Un")
                 print(yellow + " [!] - Sobra:" + normal + f"R$ {sobra:.2f}")
-                print(yellow + " [!] - Porcentagem:" + normal + f" {porcentagem:.2f}%" + normal)
+                print(yellow + " [!] - Porcentagem:" + normal + f" 1{porcentagem:.2f}%" + normal)
                 sleep(1)
                 if quantidade_linhas_meta == quantidade_linhas_venda:
                     print(green + ' [!] - INTEGRIDADE DOS DADOS CONFIRMADA' + normal)
