@@ -45,7 +45,7 @@ def dateVerification():
         # Data de ontem formatada
 
 
-titulo = "CONSULTA DE METAS " + normal + "v1.7"
+titulo = "CONSULTA DE METAS " + normal + "v1.7.1"
 tamanho = 41
 tamanho_lista = 105
 titulo_centralizado = titulo.center(tamanho)
