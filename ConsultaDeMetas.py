@@ -253,7 +253,8 @@ while True:
                 sobrasRD = (vendaAcRDMARCAS - metaAcRDMARCAS)
             else:
                 sobrasRD = 0
-            porcentagemRDMARCAS = (vendaAcRDMARCAS / metaAcRDMARCAS) * 100
+            if vendaAcRDMARCAS != 0 and metaAcRDMARCAS != 0:
+                porcentagemRDMARCAS = (vendaAcRDMARCAS / metaAcRDMARCAS) * 100
             print(yellow + f" [!] - PORCENTAGEM ACUMULADA = ", end='')
             print(rosa + f"{porcentagemRDMARCAS:.2f}%" + normal)
             print('\n')
@@ -313,7 +314,8 @@ while True:
                 sobrasPerfumaria = (vendaAcPERFUMARIA - metaAcPERFUMARIA)
             else:
                 sobrasPerfumaria = 0
-            porcentagemPERFUMARIA = (vendaAcPERFUMARIA / metaAcPERFUMARIA) * 100
+            if vendaAcPERFUMARIA != 0 and metaAcPERFUMARIA != 0:
+                porcentagemPERFUMARIA = (vendaAcPERFUMARIA / metaAcPERFUMARIA) * 100
             print(yellow + f" [!] - PORCENTAGEM ACUMULADA = ", end='')
             print(rosa + f"{porcentagemPERFUMARIA:.2f}%" + normal)
             print('\n')
@@ -387,7 +389,8 @@ while True:
                 sobrasDermo = (vendaAcDERMO - metaAcDERMO)
             else:
                 sobrasDermo = 0
-            porcentagemDERMO = (vendaAcDERMO / metaAcDERMO) * 100
+            if vendaAcDERMO != 0 and metaAcDERMO != 0:
+                porcentagemDERMO = (vendaAcDERMO / metaAcDERMO) * 100
             print(yellow + f" [!] - PORCENTAGEM ACUMULADA = ", end='')
             print(rosa + f"{porcentagemDERMO:.2f}%" + normal)
             print('\n')
