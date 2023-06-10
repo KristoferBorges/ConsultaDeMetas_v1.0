@@ -509,32 +509,30 @@ while True:
         if opcaoBackup == '1':
             print(green + ' [!] - TODOS OS DADOS SERÃO GUARDADOS!')
             sleep(0.5)
-            # BACKUP DA LISTA RD MARCAS
             confirmacao = str(input(green + ' [!] - Confirma o Backup dos dados [S/N] ' + normal)).upper().strip()
             if confirmacao == 'S':
                 try:
-                    # Pega a data formatada no dia atual
                     hora = datetime.datetime.now()
                     date = datetime.datetime.now()
-
                     date = datetime.datetime.date(date)
                     datahoje = date.strftime("%d-%m-%Y")
                     horahoje = hora.strftime("%H;%M;%S")
                     nomeArquivoRD = f"BackupRDMARCAS-{datahoje}-{horahoje}"
 
-                    # Separa as informações em formato pandas
-                    tabela_RDMARCAS = pd.read_csv("storage/listaRDMARCAS.txt", sep="|")
+                    # Lê o arquivo CSV sem o cabeçalho
+                    tabela_RDMARCAS = pd.read_csv("storage/listaRDMARCAS.txt", sep="|", header=None)
 
-                    # Define as colunas específicas
                     colunas = ["Data", "Meta", "Meta.AC", "Venda", "Venda.AC", "Sobras", "P"]
 
-                    # Renomeia as colunas nas tabelas
+                    # Adiciona a primeira linha como cabeçalho
                     tabela_RDMARCAS.columns = colunas
 
-                    # Converte em arquivos Excel e coloca na pasta requisitada
-                    tabela_RDMARCAS.to_excel(fr"backup/RDMARCAS/{nomeArquivoRD}.xlsx", index=False)
+                    # Concatena a primeira linha com o DataFrame original, ignorando o índice
+                    tabela_RDMARCAS = pd.concat([tabela_RDMARCAS], ignore_index=True)
 
-                    # Mensagem de finalização
+                    with pd.ExcelWriter(fr"backup/RDMARCAS/{nomeArquivoRD}.xlsx") as writer:
+                        tabela_RDMARCAS.to_excel(writer, index=False, sheet_name='RDMARCAS')
+
                     print(green + ' [!] - PROCESSO FINALIZADO')
                     sleep(1)
                 except PermissionError:
@@ -548,35 +546,34 @@ while True:
 
             elif confirmacao != 'S':
                 print('\n' + red + ' [!] - PROCESSO INTERROMPIDO')
-        if opcaoBackup == '2':
+        elif opcaoBackup == '2':
             print(green + ' [!] - TODOS OS DADOS SERÃO GUARDADOS!')
             sleep(0.5)
             # BACKUP DA LISTA PERFUMARIA
             confirmacao = str(input(green + ' [!] - Confirma o Backup dos dados [S/N] ' + normal)).upper().strip()
             if confirmacao == 'S':
                 try:
-                    # Pega a data formatada no dia atual
                     hora = datetime.datetime.now()
                     date = datetime.datetime.now()
-
                     date = datetime.datetime.date(date)
                     datahoje = date.strftime("%d-%m-%Y")
                     horahoje = hora.strftime("%H;%M;%S")
                     nomeArquivoPERFUMARIA = f"BackupPERFUMARIA-{datahoje}-{horahoje}"
 
-                    # Separa as informações em formato pandas
-                    tabela_PERFUMARIA = pd.read_csv("storage/listaPERFUMARIA.txt", sep="|")
+                    # Lê o arquivo CSV sem o cabeçalho
+                    tabela_PERFUMARIA = pd.read_csv("storage/listaPERFUMARIA.txt", sep="|", header=None)
 
-                    # Define as colunas específicas
                     colunas = ["Data", "Meta", "Meta.AC", "Venda", "Venda.AC", "Sobras", "P"]
 
-                    # Renomeia as colunas nas tabelas
+                    # Adiciona a primeira linha como cabeçalho
                     tabela_PERFUMARIA.columns = colunas
 
-                    # Converte em arquivos Excel e coloca na pasta requisitada
-                    tabela_PERFUMARIA.to_excel(fr"backup/PERFUMARIA/{nomeArquivoPERFUMARIA}.xlsx", index=False)
+                    # Concatena a primeira linha com o DataFrame original, ignorando o índice
+                    tabela_PERFUMARIA = pd.concat([tabela_PERFUMARIA], ignore_index=True)
 
-                    # Mensagem de finalização
+                    with pd.ExcelWriter(fr"backup/PERFUMARIA/{nomeArquivoPERFUMARIA}.xlsx") as writer:
+                        tabela_PERFUMARIA.to_excel(writer, index=False, sheet_name='PERFUMARIA')
+
                     print(green + ' [!] - PROCESSO FINALIZADO')
                     sleep(1)
                 except PermissionError:
@@ -590,35 +587,34 @@ while True:
 
             elif confirmacao != 'S':
                 print('\n' + red + ' [!] - PROCESSO INTERROMPIDO')
-        if opcaoBackup == '3':
+        elif opcaoBackup == '3':
             print(green + ' [!] - TODOS OS DADOS SERÃO GUARDADOS!')
             sleep(0.5)
-            # BACKUP DE TODAS AS LISTAS
+            # BACKUP DA LISTA DERMO
             confirmacao = str(input(green + ' [!] - Confirma o Backup dos dados [S/N] ' + normal)).upper().strip()
             if confirmacao == 'S':
                 try:
-                    # Pega a data formatada no dia atual
                     hora = datetime.datetime.now()
                     date = datetime.datetime.now()
-
                     date = datetime.datetime.date(date)
                     datahoje = date.strftime("%d-%m-%Y")
                     horahoje = hora.strftime("%H;%M;%S")
                     nomeArquivoDERMO = f"BackupDERMO-{datahoje}-{horahoje}"
 
-                    # Separa as informações em formato pandas
-                    tabela_DERMO = pd.read_csv("storage/listaDERMO.txt", sep="|")
+                    # Lê o arquivo CSV sem o cabeçalho
+                    tabela_DERMO = pd.read_csv("storage/listaDERMO.txt", sep="|", header=None)
 
-                    # Define as colunas específicas
                     colunas_dermo = ["Data", "Meta", "Meta.AC", "Venda", "Venda.AC", "Pecas", "Sobras", "P"]
 
-                    # Renomeia as colunas nas tabelas
+                    # Adiciona a primeira linha como cabeçalho
                     tabela_DERMO.columns = colunas_dermo
 
-                    # Converte em arquivos Excel e coloca na pasta requisitada
-                    tabela_DERMO.to_excel(fr"backup/DERMO/{nomeArquivoDERMO}.xlsx", index=False)
+                    # Concatena a primeira linha com o DataFrame original, ignorando o índice
+                    tabela_DERMO = pd.concat([tabela_DERMO], ignore_index=True)
 
-                    # Mensagem de finalização
+                    with pd.ExcelWriter(fr"backup/DERMO/{nomeArquivoDERMO}.xlsx") as writer:
+                        tabela_DERMO.to_excel(writer, index=False, sheet_name='DERMO')
+
                     print(green + ' [!] - PROCESSO FINALIZADO')
                     sleep(1)
                 except PermissionError:
@@ -632,7 +628,7 @@ while True:
 
             elif confirmacao != 'S':
                 print('\n' + red + ' [!] - PROCESSO INTERROMPIDO')
-        if opcaoBackup == '4':
+        elif opcaoBackup == '4':
             print(green + ' [!] - TODOS OS DADOS SERÃO GUARDADOS!')
             sleep(0.5)
             # BACKUP DE TODAS AS LISTAS
@@ -651,9 +647,9 @@ while True:
                     nomeArquivoDERMO = f"BackupDERMO-{datahoje}-{horahoje}"
 
                     # Separa as informações em formato pandas
-                    tabela_RDMARCAS = pd.read_csv("storage/listaRDMARCAS.txt", sep="|")
-                    tabela_PERFUMARIA = pd.read_csv("storage/listaPERFUMARIA.txt", sep="|")
-                    tabela_DERMO = pd.read_csv("storage/listaDERMO.txt", sep="|")
+                    tabela_RDMARCAS = pd.read_csv("storage/listaRDMARCAS.txt", sep="|", header=None)
+                    tabela_PERFUMARIA = pd.read_csv("storage/listaPERFUMARIA.txt", sep="|", header=None)
+                    tabela_DERMO = pd.read_csv("storage/listaDERMO.txt", sep="|", header=None)
 
                     # Define as colunas específicas
                     colunas = ["Data", "Meta", "Meta.AC", "Venda", "Venda.AC", "Sobras", "P"]
@@ -665,10 +661,16 @@ while True:
                     tabela_DERMO.columns = colunas_dermo
 
                     # Converte em arquivos Excel e coloca na pasta requisitada
-                    tabela_RDMARCAS.to_excel(fr"backup/RDMARCAS/{nomeArquivoRD}.xlsx", index=False)
-                    tabela_PERFUMARIA.to_excel(fr"backup/PERFUMARIA/{nomeArquivoPERFUMARIA}.xlsx", index=False)
-                    tabela_DERMO.to_excel(fr"backup/DERMO/{nomeArquivoDERMO}.xlsx", index=False)
+                    tabela_RDMARCAS = pd.concat([tabela_RDMARCAS], ignore_index=True)
+                    tabela_PERFUMARIA = pd.concat([tabela_PERFUMARIA], ignore_index=True)
+                    tabela_DERMO = pd.concat([tabela_DERMO], ignore_index=True)
 
+                    with pd.ExcelWriter(fr"backup/RDMARCAS/{nomeArquivoRD}.xlsx") as writer:
+                        tabela_RDMARCAS.to_excel(writer, index=False, sheet_name='RDMARCAS')
+                    with pd.ExcelWriter(fr"backup/PERFUMARIA/{nomeArquivoPERFUMARIA}.xlsx") as writer:
+                        tabela_PERFUMARIA.to_excel(writer, index=False, sheet_name='PERFUMARIA')
+                    with pd.ExcelWriter(fr"backup/DERMO/{nomeArquivoDERMO}.xlsx") as writer:
+                        tabela_DERMO.to_excel(writer, index=False, sheet_name='DERMO')
                     # Mensagem de finalização
                     print(green + ' [!] - PROCESSO FINALIZADO')
                     sleep(1)
@@ -687,6 +689,7 @@ while True:
         print('\n')
         print(green + ' [!] - SISTEMA DE ANÁLISE')
         print('\n')
+
         def check_data_RD():
             try:
                 with open("storage/metaAcumuladaRDMARCAS.txt", "r") as arquivoRDMetas:
