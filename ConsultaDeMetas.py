@@ -578,6 +578,9 @@ while True:
                     print(red + ' [!] - INTEGRIDADE DOS DADOS COMPROMETIDA' + normal)
                     print('\n')
                     sleep(1)
+            except ZeroDivisionError:
+                sleep(1.5)
+                print(yellow + f' [!] - LISTA SEM NUMEROS PARA ANALISAR - [RDMARCAS]' + normal)
             except Exception as error:
                 print(red + f' [!] - ERRO DE {error.__class__}' + normal)
 
@@ -616,6 +619,9 @@ while True:
                     print(red + ' [!] - INTEGRIDADE DOS DADOS COMPROMETIDA' + normal)
                     print('\n')
                     sleep(1)
+            except ZeroDivisionError:
+                sleep(1.5)
+                print(yellow + f' [!] - LISTA SEM NUMEROS PARA ANALISAR - [PERFUMARIA]' + normal)
             except Exception as error:
                 print(red + f' [!] - ERRO DE {error.__class__}' + normal)
 
@@ -659,6 +665,9 @@ while True:
                     print(red + ' [!] - INTEGRIDADE DOS DADOS COMPROMETIDA' + normal)
                     print('\n')
                     sleep(0.5)
+            except ZeroDivisionError:
+                sleep(1.5)
+                print(yellow + f' [!] - LISTA SEM NUMEROS PARA ANALISAR - [DERMO]' + normal)
             except Exception as error:
                 print(red + f' [!] - ERRO DE {error.__class__}' + normal)
 
