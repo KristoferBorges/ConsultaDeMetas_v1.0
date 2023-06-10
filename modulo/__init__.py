@@ -80,6 +80,23 @@ def tryOptionConsult(option):
             print(red + ' [!] - APENAS NÚMEROS INTEIROS DAS OPÇÕES LISTADAS!' + normal)
 
 
+def tryOptionBackup(option):
+    """
+    --> 
+    """
+    try:
+        option = int(option)
+    except ValueError:
+        print(red + ' [!] - DIGITE UM NÚMERO INTEIRO VÁLIDO!' + normal)
+    except Exception as error:
+        print(red + f' [!] - ERRO DE {error.__class__}' + normal)
+    else:
+        if option in range(1, 5):
+            return option
+        else:
+            print(red + ' [!] - APENAS NÚMEROS INTEIROS DAS OPÇÕES LISTADAS!' + normal)
+
+
 def tryExclusion(option):
     """
     --> Função para determinar a opção que o usuário irá escolher no menu, atualmente temos 4 opções, poderá excluir as

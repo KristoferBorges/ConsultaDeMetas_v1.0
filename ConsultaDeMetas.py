@@ -6,6 +6,7 @@ from time import sleep
 from modulo import tryOption
 from modulo import tryOptionList
 from modulo import tryExclusion
+from modulo import tryOptionBackup
 from modulo import capturaDeValoresMetaDia
 from modulo import capturaDeValoresVendaDia
 from modulo import capturaDeValoresPecaDia
@@ -494,59 +495,198 @@ while True:
             print('¨¨' * 52)
             print('¨¨' * 52)
     elif decis_registro_exclusao_consulta == '4':
-        print(green + ' [!] - TODOS OS DADOS SERÃO GUARDADOS!')
-        sleep(0.5)
-        # BACKUP DE TODAS AS LISTAS
-        confirmacao = str(input(green + ' [!] - Confirma o Backup dos dados [S/N] ' + normal)).upper().strip()
-        if confirmacao == 'S':
-            try:
-                # Pega a data formatada no dia atual
-                hora = datetime.datetime.now()
-                date = datetime.datetime.now()
+        print('\n')
+        print(green + ' [!] - SISTEMA DE BACKUP')
+        print('\n')
+        print(normal + f'{texto_decis_centralizado}')
+        print(yellow + f' [?] - LISTA RD MARCAS {opcao[0]}')
+        print(yellow + f' [?] - LISTA PERFUMARIA {opcao[1]}')
+        print(yellow + f' [?] - LISTA DERMO {opcao[2]}')
+        print(yellow + f' [?] - TODAS AS LISTAS {opcao[3]}')
+        opcaoBackup = str(input(' --> '))
+        print('\n')
+        tryOptionBackup(opcaoBackup)
+        if opcaoBackup == '1':
+            print(green + ' [!] - TODOS OS DADOS SERÃO GUARDADOS!')
+            sleep(0.5)
+            # BACKUP DA LISTA RD MARCAS
+            confirmacao = str(input(green + ' [!] - Confirma o Backup dos dados [S/N] ' + normal)).upper().strip()
+            if confirmacao == 'S':
+                try:
+                    # Pega a data formatada no dia atual
+                    hora = datetime.datetime.now()
+                    date = datetime.datetime.now()
 
-                date = datetime.datetime.date(date)
-                datahoje = date.strftime("%d-%m-%Y")
-                horahoje = hora.strftime("%H;%M;%S")
-                nomeArquivoRD = f"BackupRDMARCAS-{datahoje}-{horahoje}"
-                nomeArquivoPERFUMARIA = f"BackupPERFUMARIA-{datahoje}-{horahoje}"
-                nomeArquivoDERMO = f"BackupDERMO-{datahoje}-{horahoje}"
+                    date = datetime.datetime.date(date)
+                    datahoje = date.strftime("%d-%m-%Y")
+                    horahoje = hora.strftime("%H;%M;%S")
+                    nomeArquivoRD = f"BackupRDMARCAS-{datahoje}-{horahoje}"
 
-                # Separa as informações em formato pandas
-                tabela_RDMARCAS = pd.read_csv("storage/listaRDMARCAS.txt", sep="|")
-                tabela_PERFUMARIA = pd.read_csv("storage/listaPERFUMARIA.txt", sep="|")
-                tabela_DERMO = pd.read_csv("storage/listaDERMO.txt", sep="|")
+                    # Separa as informações em formato pandas
+                    tabela_RDMARCAS = pd.read_csv("storage/listaRDMARCAS.txt", sep="|")
 
-                # Define as colunas específicas
-                colunas = ["Data", "Meta", "Meta.AC", "Venda", "Venda.AC", "Sobras", "P"]
-                colunas_dermo = ["Data", "Meta", "Meta.AC", "Venda", "Venda.AC", "Pecas", "Sobras", "P"]
+                    # Define as colunas específicas
+                    colunas = ["Data", "Meta", "Meta.AC", "Venda", "Venda.AC", "Sobras", "P"]
 
-                # Renomeia as colunas nas tabelas
-                tabela_RDMARCAS.columns = colunas
-                tabela_PERFUMARIA.columns = colunas
-                tabela_DERMO.columns = colunas_dermo
+                    # Renomeia as colunas nas tabelas
+                    tabela_RDMARCAS.columns = colunas
 
-                # Converte em arquivos Excel e coloca na pasta requisitada
-                tabela_RDMARCAS.to_excel(fr"backup/RDMARCAS/{nomeArquivoRD}.xlsx", index=False)
-                tabela_PERFUMARIA.to_excel(fr"backup/PERFUMARIA/{nomeArquivoPERFUMARIA}.xlsx", index=False)
-                tabela_DERMO.to_excel(fr"backup/DERMO/{nomeArquivoDERMO}.xlsx", index=False)
+                    # Converte em arquivos Excel e coloca na pasta requisitada
+                    tabela_RDMARCAS.to_excel(fr"backup/RDMARCAS/{nomeArquivoRD}.xlsx", index=False)
 
-                # Mensagem de finalização
-                print(green + ' [!] - PROCESSO FINALIZADO')
-                sleep(1)
-            except PermissionError:
-                print('\n' + red + ' [!] - PROCESSO INTERROMPIDO (ARQUIVO ABERTO)')
-            except TypeError:
-                print('\n' + red + ' [!] - PROCESSO INTERROMPIDO (DADOS NÃO COMPATÍVEIS)')
-            except ValueError:
-                print('\n' + red + ' [!] - PROCESSO INTERROMPIDO (VALORES AUSENTES OU NÃO COMPATÍVEIS)')
-            except FileNotFoundError:
-                print('\n' + red + ' [!] - PROCESSO INTERROMPIDO (DIRETÓRIO NÃO ENCONTRADO)')
+                    # Mensagem de finalização
+                    print(green + ' [!] - PROCESSO FINALIZADO')
+                    sleep(1)
+                except PermissionError:
+                    print('\n' + red + ' [!] - PROCESSO INTERROMPIDO (ARQUIVO ABERTO)')
+                except TypeError:
+                    print('\n' + red + ' [!] - PROCESSO INTERROMPIDO (DADOS NÃO COMPATÍVEIS)')
+                except ValueError:
+                    print('\n' + red + ' [!] - PROCESSO INTERROMPIDO (VALORES AUSENTES OU NÃO COMPATÍVEIS)')
+                except FileNotFoundError:
+                    print('\n' + red + ' [!] - PROCESSO INTERROMPIDO (DIRETÓRIO NÃO ENCONTRADO)')
 
-        elif confirmacao != 'S':
-            print('\n' + red + ' [!] - PROCESSO INTERROMPIDO')
+            elif confirmacao != 'S':
+                print('\n' + red + ' [!] - PROCESSO INTERROMPIDO')
+        if opcaoBackup == '2':
+            print(green + ' [!] - TODOS OS DADOS SERÃO GUARDADOS!')
+            sleep(0.5)
+            # BACKUP DA LISTA PERFUMARIA
+            confirmacao = str(input(green + ' [!] - Confirma o Backup dos dados [S/N] ' + normal)).upper().strip()
+            if confirmacao == 'S':
+                try:
+                    # Pega a data formatada no dia atual
+                    hora = datetime.datetime.now()
+                    date = datetime.datetime.now()
+
+                    date = datetime.datetime.date(date)
+                    datahoje = date.strftime("%d-%m-%Y")
+                    horahoje = hora.strftime("%H;%M;%S")
+                    nomeArquivoPERFUMARIA = f"BackupPERFUMARIA-{datahoje}-{horahoje}"
+
+                    # Separa as informações em formato pandas
+                    tabela_PERFUMARIA = pd.read_csv("storage/listaPERFUMARIA.txt", sep="|")
+
+                    # Define as colunas específicas
+                    colunas = ["Data", "Meta", "Meta.AC", "Venda", "Venda.AC", "Sobras", "P"]
+
+                    # Renomeia as colunas nas tabelas
+                    tabela_PERFUMARIA.columns = colunas
+
+                    # Converte em arquivos Excel e coloca na pasta requisitada
+                    tabela_PERFUMARIA.to_excel(fr"backup/PERFUMARIA/{nomeArquivoPERFUMARIA}.xlsx", index=False)
+
+                    # Mensagem de finalização
+                    print(green + ' [!] - PROCESSO FINALIZADO')
+                    sleep(1)
+                except PermissionError:
+                    print('\n' + red + ' [!] - PROCESSO INTERROMPIDO (ARQUIVO ABERTO)')
+                except TypeError:
+                    print('\n' + red + ' [!] - PROCESSO INTERROMPIDO (DADOS NÃO COMPATÍVEIS)')
+                except ValueError:
+                    print('\n' + red + ' [!] - PROCESSO INTERROMPIDO (VALORES AUSENTES OU NÃO COMPATÍVEIS)')
+                except FileNotFoundError:
+                    print('\n' + red + ' [!] - PROCESSO INTERROMPIDO (DIRETÓRIO NÃO ENCONTRADO)')
+
+            elif confirmacao != 'S':
+                print('\n' + red + ' [!] - PROCESSO INTERROMPIDO')
+        if opcaoBackup == '3':
+            print(green + ' [!] - TODOS OS DADOS SERÃO GUARDADOS!')
+            sleep(0.5)
+            # BACKUP DE TODAS AS LISTAS
+            confirmacao = str(input(green + ' [!] - Confirma o Backup dos dados [S/N] ' + normal)).upper().strip()
+            if confirmacao == 'S':
+                try:
+                    # Pega a data formatada no dia atual
+                    hora = datetime.datetime.now()
+                    date = datetime.datetime.now()
+
+                    date = datetime.datetime.date(date)
+                    datahoje = date.strftime("%d-%m-%Y")
+                    horahoje = hora.strftime("%H;%M;%S")
+                    nomeArquivoDERMO = f"BackupDERMO-{datahoje}-{horahoje}"
+
+                    # Separa as informações em formato pandas
+                    tabela_DERMO = pd.read_csv("storage/listaDERMO.txt", sep="|")
+
+                    # Define as colunas específicas
+                    colunas_dermo = ["Data", "Meta", "Meta.AC", "Venda", "Venda.AC", "Pecas", "Sobras", "P"]
+
+                    # Renomeia as colunas nas tabelas
+                    tabela_DERMO.columns = colunas_dermo
+
+                    # Converte em arquivos Excel e coloca na pasta requisitada
+                    tabela_DERMO.to_excel(fr"backup/DERMO/{nomeArquivoDERMO}.xlsx", index=False)
+
+                    # Mensagem de finalização
+                    print(green + ' [!] - PROCESSO FINALIZADO')
+                    sleep(1)
+                except PermissionError:
+                    print('\n' + red + ' [!] - PROCESSO INTERROMPIDO (ARQUIVO ABERTO)')
+                except TypeError:
+                    print('\n' + red + ' [!] - PROCESSO INTERROMPIDO (DADOS NÃO COMPATÍVEIS)')
+                except ValueError:
+                    print('\n' + red + ' [!] - PROCESSO INTERROMPIDO (VALORES AUSENTES OU NÃO COMPATÍVEIS)')
+                except FileNotFoundError:
+                    print('\n' + red + ' [!] - PROCESSO INTERROMPIDO (DIRETÓRIO NÃO ENCONTRADO)')
+
+            elif confirmacao != 'S':
+                print('\n' + red + ' [!] - PROCESSO INTERROMPIDO')
+        if opcaoBackup == '4':
+            print(green + ' [!] - TODOS OS DADOS SERÃO GUARDADOS!')
+            sleep(0.5)
+            # BACKUP DE TODAS AS LISTAS
+            confirmacao = str(input(green + ' [!] - Confirma o Backup dos dados [S/N] ' + normal)).upper().strip()
+            if confirmacao == 'S':
+                try:
+                    # Pega a data formatada no dia atual
+                    hora = datetime.datetime.now()
+                    date = datetime.datetime.now()
+
+                    date = datetime.datetime.date(date)
+                    datahoje = date.strftime("%d-%m-%Y")
+                    horahoje = hora.strftime("%H;%M;%S")
+                    nomeArquivoRD = f"BackupRDMARCAS-{datahoje}-{horahoje}"
+                    nomeArquivoPERFUMARIA = f"BackupPERFUMARIA-{datahoje}-{horahoje}"
+                    nomeArquivoDERMO = f"BackupDERMO-{datahoje}-{horahoje}"
+
+                    # Separa as informações em formato pandas
+                    tabela_RDMARCAS = pd.read_csv("storage/listaRDMARCAS.txt", sep="|")
+                    tabela_PERFUMARIA = pd.read_csv("storage/listaPERFUMARIA.txt", sep="|")
+                    tabela_DERMO = pd.read_csv("storage/listaDERMO.txt", sep="|")
+
+                    # Define as colunas específicas
+                    colunas = ["Data", "Meta", "Meta.AC", "Venda", "Venda.AC", "Sobras", "P"]
+                    colunas_dermo = ["Data", "Meta", "Meta.AC", "Venda", "Venda.AC", "Pecas", "Sobras", "P"]
+
+                    # Renomeia as colunas nas tabelas
+                    tabela_RDMARCAS.columns = colunas
+                    tabela_PERFUMARIA.columns = colunas
+                    tabela_DERMO.columns = colunas_dermo
+
+                    # Converte em arquivos Excel e coloca na pasta requisitada
+                    tabela_RDMARCAS.to_excel(fr"backup/RDMARCAS/{nomeArquivoRD}.xlsx", index=False)
+                    tabela_PERFUMARIA.to_excel(fr"backup/PERFUMARIA/{nomeArquivoPERFUMARIA}.xlsx", index=False)
+                    tabela_DERMO.to_excel(fr"backup/DERMO/{nomeArquivoDERMO}.xlsx", index=False)
+
+                    # Mensagem de finalização
+                    print(green + ' [!] - PROCESSO FINALIZADO')
+                    sleep(1)
+                except PermissionError:
+                    print('\n' + red + ' [!] - PROCESSO INTERROMPIDO (ARQUIVO ABERTO)')
+                except TypeError:
+                    print('\n' + red + ' [!] - PROCESSO INTERROMPIDO (DADOS NÃO COMPATÍVEIS)')
+                except ValueError:
+                    print('\n' + red + ' [!] - PROCESSO INTERROMPIDO (VALORES AUSENTES OU NÃO COMPATÍVEIS)')
+                except FileNotFoundError:
+                    print('\n' + red + ' [!] - PROCESSO INTERROMPIDO (DIRETÓRIO NÃO ENCONTRADO)')
+
+            elif confirmacao != 'S':
+                print('\n' + red + ' [!] - PROCESSO INTERROMPIDO')
     elif decis_registro_exclusao_consulta == '5':
-        print('\n\n')
-
+        print('\n')
+        print(green + ' [!] - SISTEMA DE ANÁLISE')
+        print('\n')
         def check_data_RD():
             try:
                 with open("storage/metaAcumuladaRDMARCAS.txt", "r") as arquivoRDMetas:
