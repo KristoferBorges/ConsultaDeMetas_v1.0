@@ -38,6 +38,8 @@ def dateVerification():
         data = data.strftime("%d-%m-%Y")
         data_soma = int(data[:2])
         data_soma = data_soma - 1
+        if teste:
+            data_soma = random.randint(1, 28)
         data_soma = str(data_soma)
         if len(data_soma) == 1:
             data_soma = '0' + data_soma
@@ -45,7 +47,13 @@ def dateVerification():
         # Data de ontem formatada
 
 
-titulo = "CONSULTA DE METAS " + normal + "v1.7.1"
+# Variável de Teste, deixar falso se não for utilizado
+teste = True
+if teste:
+    teste_titulo = red + "(TESTE ON)" + normal
+else:
+    teste_titulo = ""
+titulo = f"CONSULTA DE METAS {teste_titulo}" + normal + " v1.7.1"
 tamanho = 41
 tamanho_lista = 105
 titulo_centralizado = titulo.center(tamanho)
@@ -71,10 +79,6 @@ texto_PERFUMARIA_lista_centralizado = texto_PERFUMARIA.center(tamanho_lista)
 texto_DERMO_lista_centralizado = texto_DERMO.center(tamanho_lista)
 
 opcao = tuple([normal + "[1]", normal + "[2]", normal + "[3]", normal + "[4]", normal + "[5]", normal + "[6]"])
-
-
-# Variável de Teste, deixar falso se não for utilizado
-teste = False
 while True:
     print('\n\n')
     print(rosa + '$=' * 21 + normal)
