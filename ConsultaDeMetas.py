@@ -728,6 +728,7 @@ while True:
             except ZeroDivisionError:
                 sleep(1.5)
                 print(yellow + f' [!] - LISTA SEM NUMEROS PARA ANALISAR - [RDMARCAS]' + normal)
+                print('\n')
             except Exception as error:
                 print(red + f' [!] - ERRO DE {error.__class__}' + normal)
 
@@ -769,6 +770,7 @@ while True:
             except ZeroDivisionError:
                 sleep(1.5)
                 print(yellow + f' [!] - LISTA SEM NUMEROS PARA ANALISAR - [PERFUMARIA]' + normal)
+                print('\n')
             except Exception as error:
                 print(red + f' [!] - ERRO DE {error.__class__}' + normal)
 
@@ -815,6 +817,7 @@ while True:
             except ZeroDivisionError:
                 sleep(1.5)
                 print(yellow + f' [!] - LISTA SEM NUMEROS PARA ANALISAR - [DERMO]' + normal)
+                print('\n')
             except Exception as error:
                 print(red + f' [!] - ERRO DE {error.__class__}' + normal)
 
