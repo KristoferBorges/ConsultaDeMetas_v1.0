@@ -53,7 +53,7 @@ if teste:
     teste_titulo = red + "(TESTE ON)" + normal
 else:
     teste_titulo = ""
-titulo = f"CONSULTA DE METAS {teste_titulo}" + normal + " v1.7.1"
+titulo = f"CONSULTA DE METAS {teste_titulo}" + ciano + " v1.7.2"
 tamanho = 41
 tamanho_lista = 105
 titulo_centralizado = titulo.center(tamanho)
