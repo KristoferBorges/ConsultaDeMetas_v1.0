@@ -718,6 +718,9 @@ while True:
                 sobra = abs(total_metas - total_vendas)
                 porcentagem = (total_vendas / total_metas) * 100
 
+                # Análise alcance de metas (Opção de integridade)
+                devedor = abatimento(metaAcRDMARCAS, vendaAcRDMARCAS)
+
                 print(rosa + "Dados da lista de RD Marcas:" + normal)
                 print(yellow + " [!] - Meta acumulada:" + normal + f"R$ {total_metas:.2f}")
                 print(yellow + " [!] - Venda acumulada:" + normal + f"R$ {total_vendas:.2f}")
