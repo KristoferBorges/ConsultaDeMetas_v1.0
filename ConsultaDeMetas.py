@@ -10,8 +10,8 @@ from modulo import tryOptionBackup
 from modulo import capturaDeValoresMetaDia
 from modulo import capturaDeValoresVendaDia
 from modulo import capturaDeValoresPecaDia
+from modulo import abatimento
 from modulo import tryOptionConsult
-
 
 # Cores
 red = '\033[31m'
@@ -48,7 +48,7 @@ def dateVerification():
 
 
 # Variável de Teste, deixar falso se não for utilizado
-teste = False
+teste = True
 if teste:
     teste_titulo = red + "(TESTE ON)" + normal
 else:
@@ -89,23 +89,23 @@ while True:
     # input de decisão
     print(texto_decis_centralizado)
     decis_registro_exclusao_consulta = str(input(yellow + f' [?] - NOVOS REGISTROS {opcao[0]}\n' + yellow +
-                                                          f' [?] - LIMPAR DADOS ATUAIS {opcao[1]}\n' + yellow +
-                                                          f' [?] - CONSULTAR LISTAS ATUAIS {opcao[2]}\n' + yellow +
-                                                          f' [?] - BACKUP DOS DADOS {opcao[3]}\n' + yellow +
-                                                          f' [?] - VERIFICAR INTEGRIDADE DOS DADOS {opcao[4]}\n'
-                                                          + yellow +
-                                                          f' [?] - SAIR DO PROGRAMA {opcao[5]}\n' + yellow +
-                                                          ' --> ' + normal))
+                                                 f' [?] - LIMPAR DADOS ATUAIS {opcao[1]}\n' + yellow +
+                                                 f' [?] - CONSULTAR LISTAS ATUAIS {opcao[2]}\n' + yellow +
+                                                 f' [?] - BACKUP DOS DADOS {opcao[3]}\n' + yellow +
+                                                 f' [?] - VERIFICAR INTEGRIDADE DOS DADOS {opcao[4]}\n'
+                                                 + yellow +
+                                                 f' [?] - SAIR DO PROGRAMA {opcao[5]}\n' + yellow +
+                                                 ' --> ' + normal))
     tryOption(decis_registro_exclusao_consulta)
     if decis_registro_exclusao_consulta == '2':
         print('\n')
         print(red + ' [!] - SISTEMA DE EXCLUSÃO\n' + normal)
         print(texto_decis_centralizado)
         decis2_listas = str(input(red + f' [?] - Lista de RD Marcas - {opcao[0]}\n' + red +
-                                        f' [?] - Lista de Perfumaria - {opcao[1]}\n' + red +
-                                        f' [?] - Lista de Dermo - {opcao[2]}\n' + red +
-                                        f' [?] - TODAS AS LISTAS - {opcao[3]}\n' + red +
-                                        ' --> ' + normal + ''))
+                                  f' [?] - Lista de Perfumaria - {opcao[1]}\n' + red +
+                                  f' [?] - Lista de Dermo - {opcao[2]}\n' + red +
+                                  f' [?] - TODAS AS LISTAS - {opcao[3]}\n' + red +
+                                  ' --> ' + normal + ''))
         tryExclusion(decis2_listas)
         print('\n')
         if decis2_listas == '1':
@@ -207,9 +207,9 @@ while True:
         print(green + ' [!] - SISTEMA DE REGISTRO\n' + normal)
         print(texto_decis_centralizado)
         decis_listas = str(input(yellow + f' [?] - Lista de RD Marcas - {opcao[0]}\n' + yellow +
-                                          f' [?] - Lista de Perfumaria - {opcao[1]}\n' + yellow +
-                                          f' [?] - Lista de Dermo - {opcao[2]}\n' + yellow +
-                                          ' --> ' + normal))
+                                 f' [?] - Lista de Perfumaria - {opcao[1]}\n' + yellow +
+                                 f' [?] - Lista de Dermo - {opcao[2]}\n' + yellow +
+                                 ' --> ' + normal))
         tryOptionList(decis_listas)
         if decis_listas == '1':
             # Inputs de dados - RD Marcas
@@ -266,11 +266,13 @@ while True:
             print(rosa + '=-' * 21 + normal)
             print(roxo + texto_dados_centralizado + normal)
             print(rosa + '=-' * 21 + normal)
+            # Análise alcance de metas
+            devedor = abatimento(metaAcRDMARCAS, vendaAcRDMARCAS)
             # Inserção de dados
             with open("storage/listaRDMARCAS.txt", "a") as listaRDMARCAS:
                 listaRDMARCAS.write(f"{data}|R${metaDia:.2f}|R${metaAcRDMARCAS:.2f}|R${vendaDia:.2f}|"
                                     f"R${vendaAcRDMARCAS:.2f}|"
-                                    f"R${sobrasRD:.2f}|"
+                                    f"{devedor}R${sobrasRD:.2f}|"
                                     f"{porcentagemRDMARCAS:.2f}%\n")
         elif decis_listas == '2':
             # Inputs de dados - RD Perfumaria
@@ -327,11 +329,13 @@ while True:
             print(rosa + '=-' * 21 + normal)
             print(roxo + texto_dados_centralizado + normal)
             print(rosa + '=-' * 21 + normal)
+            # Análise alcance de metas
+            devedor = abatimento(metaAcPERFUMARIA, vendaAcPERFUMARIA)
             # Inserção de dados
             with open("storage/listaPERFUMARIA.txt", "a") as listaPERFUMARIA:
                 listaPERFUMARIA.write(f"{data} | R${metaDia:.2f} | R${metaAcPERFUMARIA:.2f} | R${vendaDia:.2f} |"
                                       f" R${vendaAcPERFUMARIA:.2f} | "
-                                      f" R${sobrasPerfumaria :.2f} | "
+                                      f" {devedor}R${sobrasPerfumaria :.2f} |"
                                       f"{porcentagemPERFUMARIA:.2f}%\n")
         elif decis_listas == '3':
             # Inputs de dados - RD Dermo
@@ -402,21 +406,23 @@ while True:
             print(rosa + '=-' * 21 + normal)
             print(roxo + texto_dados_centralizado + normal)
             print(rosa + '=-' * 21 + normal)
+            # Análise alcance de metas
+            devedor = abatimento(metaAcDERMO, vendaAcDERMO)
             # Inserção de dados
             with open("storage/listaDERMO.txt", "a") as listaDERMO:
                 listaDERMO.write(f"{data} | R${metaDia:.2f} | R${metaAcDERMO:.2f} | R${vendaDia:.2f} |"
                                  f" R${vendaAcDERMO:.2f} | "
                                  f" {pecaAc}Un | "
-                                 f" R${sobrasDermo:.2f} | "
+                                 f" {devedor}R${sobrasDermo:.2f} | "
                                  f"{porcentagemDERMO:.2f}%\n")
     elif decis_registro_exclusao_consulta == '3':
         print('\n')
         print(texto_decis_centralizado)
         decis_consulta = str(input((yellow + f" [?] - CONSULTAR LISTA DE RD MARCAS {opcao[0]}\n" + yellow +
-                                             f" [?] - CONSULTAR LISTA DE PERFUMARIA {opcao[1]}\n" + yellow +
-                                             f" [?] - CONSULTAR LISTA DE DERMO {opcao[2]}\n" + yellow +
-                                             f" [?] - CONSULTAR TODAS AS LISTAS {opcao[3]}\n" + yellow +
-                                             " --> " + normal)))
+                                    f" [?] - CONSULTAR LISTA DE PERFUMARIA {opcao[1]}\n" + yellow +
+                                    f" [?] - CONSULTAR LISTA DE DERMO {opcao[2]}\n" + yellow +
+                                    f" [?] - CONSULTAR TODAS AS LISTAS {opcao[3]}\n" + yellow +
+                                    " --> " + normal)))
         tryOptionConsult(decis_consulta)
         if decis_consulta == '1':
             print('¨¨' * 46)
@@ -693,6 +699,7 @@ while True:
         print('\n')
         print(green + ' [!] - SISTEMA DE ANÁLISE')
         print('\n')
+
 
         def check_data_RD():
             try:

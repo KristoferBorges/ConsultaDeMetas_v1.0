@@ -201,6 +201,14 @@ def tryIsNumber_pecas(valor):
             sys.exit()
 
 
+def abatimento(meta, vendas):
+    if vendas >= meta:
+        devedor = ""
+    else:
+        devedor = "-"
+    return devedor
+
+
 def testList():
     global data, metaDia, vendaDia, linhas, linha, metaAcRDMARCAS, vendaAcRDMARCAS, sobrasRD, \
         porcentagemRDMARCAS, linhas2
