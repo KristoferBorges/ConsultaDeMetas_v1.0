@@ -719,13 +719,17 @@ while True:
                 porcentagem = (total_vendas / total_metas) * 100
 
                 # Análise alcance de metas (Opção de integridade)
-                devedor = abatimento(metaAcRDMARCAS, vendaAcRDMARCAS)
+                devedor_abatimento_rd = abatimento(total_metas, total_vendas)
+                if total_vendas < total_metas:
+                    situacao = red
+                else:
+                    situacao = normal
 
                 print(rosa + "Dados da lista de RD Marcas:" + normal)
                 print(yellow + " [!] - Meta acumulada:" + normal + f"R$ {total_metas:.2f}")
                 print(yellow + " [!] - Venda acumulada:" + normal + f"R$ {total_vendas:.2f}")
-                print(yellow + " [!] - Sobra:" + normal + f"R$ {sobra:.2f}")
-                print(yellow + " [!] - Porcentagem:" + normal + f" {porcentagem:.2f}%")
+                print(yellow + f" [!] - Sobra:{situacao}{devedor_abatimento_rd}R$ {sobra:.2f}")
+                print(yellow + f" [!] - Porcentagem:{situacao}{devedor_abatimento_rd}{porcentagem:.2f}%")
                 sleep(1)
                 if quantidade_linhas_meta == quantidade_linhas_venda:
                     print(green + ' [!] - INTEGRIDADE DOS DADOS CONFIRMADA' + normal)
@@ -763,11 +767,18 @@ while True:
                 sobra = abs(total_metas - total_vendas)
                 porcentagem = (total_vendas / total_metas) * 100
 
+                # Análise alcance de metas (Opção de integridade)
+                devedor_abatimento_perfumaria = abatimento(total_metas, total_vendas)
+                if total_vendas < total_metas:
+                    situacao = red
+                else:
+                    situacao = normal
+
                 print(rosa + "Dados da lista de PERFUMARIA:" + normal)
                 print(yellow + " [!] - Meta acumulada:" + normal + f"R$ {total_metas:.2f}")
                 print(yellow + " [!] - Venda acumulada:" + normal + f"R$ {total_vendas:.2f}")
-                print(yellow + " [!] - Sobra:" + normal + f"R$ {sobra:.2f}")
-                print(yellow + " [!] - Porcentagem:" + normal + f" {porcentagem:.2f}%")
+                print(yellow + f" [!] - Sobra:{situacao}{devedor_abatimento_perfumaria}R$ {sobra:.2f}")
+                print(yellow + f" [!] - Porcentagem:{situacao}{devedor_abatimento_perfumaria}{porcentagem:.2f}%")
                 sleep(1)
                 if quantidade_linhas_meta == quantidade_linhas_venda:
                     print(green + ' [!] - INTEGRIDADE DOS DADOS CONFIRMADA' + normal)
@@ -809,12 +820,19 @@ while True:
                 sobra = abs(total_metas - total_vendas)
                 porcentagem = (total_vendas / total_metas) * 100
 
+                # Análise alcance de metas (Opção de integridade)
+                devedor_abatimento_dermo = abatimento(total_metas, total_vendas)
+                if total_vendas < total_metas:
+                    situacao = red
+                else:
+                    situacao = normal
+
                 print(rosa + "Dados da lista de DERMO:" + normal)
                 print(yellow + " [!] - Meta acumulada:" + normal + f"R$ {total_metas:.2f}")
                 print(yellow + " [!] - Venda acumulada:" + normal + f"R$ {total_vendas:.2f}")
                 print(yellow + " [!] - Peças acumuladas:" + normal + f" {total_pecas}Un")
-                print(yellow + " [!] - Sobra:" + normal + f"R$ {sobra:.2f}")
-                print(yellow + " [!] - Porcentagem:" + normal + f" 1{porcentagem:.2f}%" + normal)
+                print(yellow + f" [!] - Sobra:{situacao}{devedor_abatimento_dermo}R$ {sobra:.2f}")
+                print(yellow + f" [!] - Porcentagem:{situacao}{devedor_abatimento_dermo}{porcentagem:.2f}%" + normal)
                 sleep(1)
                 if quantidade_linhas_meta == quantidade_linhas_venda:
                     print(green + ' [!] - INTEGRIDADE DOS DADOS CONFIRMADA' + normal)
