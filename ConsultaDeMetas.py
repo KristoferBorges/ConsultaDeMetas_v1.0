@@ -48,7 +48,7 @@ def dateVerification():
 
 
 # Variável de Teste, deixar falso se não for utilizado
-teste = True
+teste = False
 if teste:
     teste_titulo = red + "(TESTE ON)" + normal
 else:
