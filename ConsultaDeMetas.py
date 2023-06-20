@@ -48,7 +48,7 @@ def dateVerification():
 
 
 # Variável de Teste, deixar falso se não for utilizado
-teste = False
+teste = True
 if teste:
     teste_titulo = red + "(TESTE ON)" + normal
 else:
@@ -434,7 +434,7 @@ while True:
             for linha in linhas3:
                 dado = linha.split('|')
                 for i in dado:
-                    print(f'{i:>13}', end='')
+                    print(f'{i:>14}', end='')
             print()
             print('¨¨' * 46)
         elif decis_consulta == '2':
@@ -447,7 +447,7 @@ while True:
             for linha in linhas3:
                 dado = linha.split('|')
                 for i in dado:
-                    print(f'{i:>13}', end='')
+                    print(f'{i:>14}', end='')
             print()
             print('¨¨' * 46)
         elif decis_consulta == '3':
@@ -461,7 +461,7 @@ while True:
             for linha in linhas3:
                 dado = linha.split('|')
                 for i in dado:
-                    print(f'{i:>13}', end='')
+                    print(f'{i:>14}', end='')
             print()
             print('¨¨' * 52)
         elif decis_consulta == '4':
