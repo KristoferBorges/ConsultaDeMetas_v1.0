@@ -427,7 +427,7 @@ while True:
         if decis_consulta == '1':
             print('¨¨' * 46)
             print(texto_RDMarcas_lista_centralizado)
-            print(green + '{:>10}{:>13}{:>15}{:>12}{:>15}{:>11}{:>14}'.format('DATA', 'META', 'META.AC', 'VENDAS',
+            print(green + '{:>10}{:>15}{:>16}{:>14}{:>16}{:>11}{:>15}'.format('DATA', 'META', 'META.AC', 'VENDAS',
                                                                               'VENDAS.AC', 'SOBRAS', 'P' + normal))
             with open("storage/listaRDMARCAS.txt", "r") as listaRDMARCAS:
                 linhas3 = listaRDMARCAS.readlines()
@@ -440,7 +440,7 @@ while True:
         elif decis_consulta == '2':
             print('¨¨' * 46)
             print(texto_PERFUMARIA_lista_centralizado)
-            print(green + '{:>10}{:>13}{:>15}{:>12}{:>15}{:>11}{:>14}'.format('DATA', 'META', 'META.AC', 'VENDAS',
+            print(green + '{:>10}{:>15}{:>15}{:>14}{:>15}{:>12}{:>16}'.format('DATA', 'META', 'META.AC', 'VENDAS',
                                                                               'VENDAS.AC', 'SOBRAS', 'P' + normal))
             with open("storage/listaPERFUMARIA.txt", "r") as listaPERFUMARIA:
                 linhas3 = listaPERFUMARIA.readlines()
@@ -453,7 +453,7 @@ while True:
         elif decis_consulta == '3':
             print('¨¨' * 52)
             print(texto_DERMO_lista_centralizado)
-            print(green + '{:>10}{:>13}{:>15}{:>12}{:>14}{:>13}{:>12}{:>14}'.format('DATA', 'META',
+            print(green + '{:>10}{:>14}{:>16}{:>14}{:>14}{:>16}{:>12}{:>15}'.format('DATA', 'META',
                                                                                     'META.AC', 'VENDAS', 'VENDAS.AC',
                                                                                     'PECA.AC', 'SOBRAS', 'P' + normal))
             with open("storage/listaDERMO.txt", "r") as listaDERMO:
@@ -468,39 +468,39 @@ while True:
             print('¨¨' * 52)
             print('¨¨' * 52)
             print(texto_RDMarcas_lista_centralizado)
-            print(green + '{:>10}{:>13}{:>15}{:>12}{:>15}{:>11}{:>14}'.format('DATA', 'META', 'META.AC', 'VENDAS',
+            print(green + '{:>10}{:>15}{:>16}{:>14}{:>16}{:>11}{:>15}'.format('DATA', 'META', 'META.AC', 'VENDAS',
                                                                               'VENDAS.AC', 'SOBRAS', 'P' + normal))
             with open("storage/listaRDMARCAS.txt", "r") as listaRDMARCAS:
                 linhas3 = listaRDMARCAS.readlines()
             for linha in linhas3:
                 dado = linha.split('|')
                 for i in dado:
-                    print(f'{i:>13}', end='')
+                    print(f'{i:>14}', end='')
             print()
             print('¨¨' * 52)
             print('¨¨' * 52)
             print(texto_PERFUMARIA_lista_centralizado)
-            print(green + '{:>10}{:>13}{:>15}{:>12}{:>15}{:>11}{:>14}'.format('DATA', 'META', 'META.AC', 'VENDAS',
+            print(green + '{:>10}{:>15}{:>15}{:>14}{:>15}{:>12}{:>16}'.format('DATA', 'META', 'META.AC', 'VENDAS',
                                                                               'VENDAS.AC', 'SOBRAS', 'P' + normal))
             with open("storage/listaPERFUMARIA.txt", "r") as listaPERFUMARIA:
                 linhas3 = listaPERFUMARIA.readlines()
             for linha in linhas3:
                 dado = linha.split('|')
                 for i in dado:
-                    print(f'{i:>13}', end='')
+                    print(f'{i:>14}', end='')
             print()
             print('¨¨' * 52)
             print('¨¨' * 52)
             print(texto_DERMO_lista_centralizado)
-            print(green + '{:>10}{:>13}{:>15}{:>12}{:>14}{:>13}{:>12}{:>14}'.format('DATA', 'META', 'META.AC', 'VENDAS',
-                                                                                    'VENDAS.AC', 'PECA.AC', 'SOBRAS',
-                                                                                    'P' + normal))
+            print(green + '{:>10}{:>14}{:>16}{:>14}{:>14}{:>16}{:>12}{:>15}'.format('DATA', 'META',
+                                                                                    'META.AC', 'VENDAS', 'VENDAS.AC',
+                                                                                    'PECA.AC', 'SOBRAS', 'P' + normal))
             with open("storage/listaDERMO.txt", "r") as listaDERMO:
                 linhas3 = listaDERMO.readlines()
             for linha in linhas3:
                 dado = linha.split('|')
                 for i in dado:
-                    print(f'{i:>13}', end='')
+                    print(f'{i:>14}', end='')
             print()
             print('¨¨' * 52)
             print('¨¨' * 52)
