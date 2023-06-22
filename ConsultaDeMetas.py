@@ -48,13 +48,13 @@ def dateVerification():
 
 
 # Variável de Teste, deixar falso se não for utilizado
-teste = True
+teste = False
 if teste:
     teste_titulo = red + "(TESTE ON)" + normal
 else:
     teste_titulo = ""
 titulo = f"CONSULTA DE METAS {teste_titulo}" + ciano + " v1.7.2"
-tamanho = 41
+tamanho = 43
 tamanho_lista = 105
 titulo_centralizado = titulo.center(tamanho)
 data_formatada = ""
@@ -729,7 +729,7 @@ while True:
                 print(yellow + " [!] - Meta acumulada:" + normal + f"R$ {total_metas:.2f}")
                 print(yellow + " [!] - Venda acumulada:" + normal + f"R$ {total_vendas:.2f}")
                 print(yellow + f" [!] - Sobra:{situacao}{devedor_abatimento_rd}R$ {sobra:.2f}")
-                print(yellow + f" [!] - Porcentagem:{situacao}{devedor_abatimento_rd}{porcentagem:.2f}%")
+                print(yellow + f" [!] - Porcentagem:{normal} {porcentagem:.2f}%")
                 sleep(1)
                 if quantidade_linhas_meta == quantidade_linhas_venda:
                     print(green + ' [!] - INTEGRIDADE DOS DADOS CONFIRMADA' + normal)
@@ -778,7 +778,7 @@ while True:
                 print(yellow + " [!] - Meta acumulada:" + normal + f"R$ {total_metas:.2f}")
                 print(yellow + " [!] - Venda acumulada:" + normal + f"R$ {total_vendas:.2f}")
                 print(yellow + f" [!] - Sobra:{situacao}{devedor_abatimento_perfumaria}R$ {sobra:.2f}")
-                print(yellow + f" [!] - Porcentagem:{situacao}{devedor_abatimento_perfumaria}{porcentagem:.2f}%")
+                print(yellow + f" [!] - Porcentagem:{normal} {porcentagem:.2f}%")
                 sleep(1)
                 if quantidade_linhas_meta == quantidade_linhas_venda:
                     print(green + ' [!] - INTEGRIDADE DOS DADOS CONFIRMADA' + normal)
@@ -832,7 +832,7 @@ while True:
                 print(yellow + " [!] - Venda acumulada:" + normal + f"R$ {total_vendas:.2f}")
                 print(yellow + " [!] - Peças acumuladas:" + normal + f" {total_pecas}Un")
                 print(yellow + f" [!] - Sobra:{situacao}{devedor_abatimento_dermo}R$ {sobra:.2f}")
-                print(yellow + f" [!] - Porcentagem:{situacao}{devedor_abatimento_dermo}{porcentagem:.2f}%" + normal)
+                print(yellow + f" [!] - Porcentagem:{normal} {porcentagem:.2f}%" + normal)
                 sleep(1)
                 if quantidade_linhas_meta == quantidade_linhas_venda:
                     print(green + ' [!] - INTEGRIDADE DOS DADOS CONFIRMADA' + normal)
