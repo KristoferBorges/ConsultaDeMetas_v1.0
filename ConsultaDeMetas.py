@@ -29,6 +29,8 @@ def dateVerification():
     --> Sistema: Ele pegará a data atual e fara uma formatação dos dois primeiros números, fazendo com que seja a data
     de ontem.
     Exemplo: 15/03/2021 = 14/03/2021
+    Teste ON: Caso a variável {teste} for verdadeira, o sistema pegará aleatóriamente um número entre 1 e 28 para
+    preencher o dia.
     :return: Retornará uma string com a data de ontem
     """
     global data_formatada, data
