@@ -518,6 +518,7 @@ while True:
         opcaoBackup = str(input(' --> '))
         print('\n')
         tryOptionBackup(opcaoBackup)
+        # BACKUP DA LISTA RD MARCAS
         if opcaoBackup == '1':
             print(green + ' [!] - TODOS OS DADOS SERÃO GUARDADOS!')
             sleep(0.5)
